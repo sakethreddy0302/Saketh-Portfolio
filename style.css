@@ -1,0 +1,471 @@
+/* ---------------------------------------------------- */
+/* Smooth Scrolling for Navigation */
+/* ---------------------------------------------------- */
+html {
+    /* KEY CHANGE: Enables smooth animation when navigating to fragment IDs (e.g., #about, #projects) */
+    scroll-behavior: smooth; 
+}
+
+/* ---------------------------------------------------- */
+/* Global Reset & Variables (DARK THEME & NEON ACCENT) 🌙 */
+/* ---------------------------------------------------- */
+:root {
+    /* Define a color palette (Dark & Modern) */
+    --primary-color: #4DB6AC; /* Teal/Aqua for highlights/buttons (bright accent) */
+    --secondary-color: #00897B; /* Darker Teal for hover */
+    --text-color: #E0E0E0; /* Light Gray text for readability */
+    --background-color: #121212; /* Very Dark Gray/Black background (main body color) */
+    --card-background: #1E1E1E; /* Slightly Lighter Dark Gray for cards and sections */
+    --font-family-primary: 'Helvetica Neue', Arial, sans-serif;
+    --padding-section: 60px;
+    
+    /* Neon Shadow Definition for Reusability */
+    --neon-shadow-subtle: 0 0 5px var(--primary-color), 0 0 10px rgba(77, 182, 172, 0.4);
+    --neon-shadow-strong: 0 0 10px var(--primary-color), 0 0 20px rgba(77, 182, 172, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial for responsive design */
+}
+
+body {
+    font-family: var(--font-family-primary);
+    line-height: 1.6;
+    color: var(--text-color); /* Uses light text color */
+    background-color: var(--background-color); /* Uses dark background color */
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.5em;
+    color: var(--text-color); /* Headings use light text color */
+}
+
+section {
+    padding: var(--padding-section) 5%;
+}
+
+/* ---------------------------------------------------- */
+/* Header & Navigation (Using Flexbox) */
+/* ---------------------------------------------------- */
+header {
+    background: var(--card-background); /* Uses dark card background */
+    padding: 15px 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Darker shadow for contrast */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    position: sticky; /* Sticky nav bar */
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex; 
+    gap: 25px; 
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color); /* Nav links use light text color */
+    font-weight: 500;
+    transition: color 0.3s, text-shadow 0.3s; /* Added text-shadow transition */
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color); /* Neon text glow */
+}
+
+/* ---------------------------------------------------- */
+/* Hero Section */
+/* ---------------------------------------------------- */
+.hero-section {
+    background: linear-gradient(135deg, #1C1C1C, #2C3E50); 
+    min-height: 80vh;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.tagline {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--primary-color); /* Neon button outline */
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--background-color); 
+}
+
+.primary-btn:hover {
+    background-color: var(--secondary-color);
+    box-shadow: var(--neon-shadow-subtle); /* Button neon glow */
+}
+
+/* ---------------------------------------------------- */
+/* Leadership Section Styling (Neon Glow) */
+/* ---------------------------------------------------- */
+
+.leadership-section {
+    text-align: center; /* Center the heading and descriptive text */
+}
+
+.leadership-section h2 {
+    margin-bottom: 20px;
+}
+
+.leadership-section p {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+}
+
+.leadership-grid {
+    /* Uses CSS Grid for a 3-column layout */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.activity-card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left; /* Text alignment inside the card */
+    border: 1px solid var(--card-background);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s ease-in-out, border 0.3s;
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+    /* Apply neon glow on hover */
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8), var(--neon-shadow-strong);
+}
+
+.activity-card h3 {
+    color: var(--primary-color); /* Highlight the role title */
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.role-title {
+    font-weight: 500;
+    font-size: 0.9em;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.duration {
+    font-style: italic;
+    font-size: 0.8em;
+    color: #999; /* Subdued color for dates */
+    margin-bottom: 10px;
+    border-bottom: 1px dashed rgba(224, 224, 224, 0.1);
+    padding-bottom: 5px;
+}
+
+.role-desc {
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+/* ---------------------------------------------------- */
+/* Skills Section (Neon Glow) */
+/* ---------------------------------------------------- */
+.skill-category-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 30px;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+
+.skill-category {
+    flex: 1; 
+    min-width: 250px; 
+    padding: 20px;
+    background-color: var(--card-background); 
+    border: 1px solid var(--card-background); /* Base border to match card */
+    border-left: 3px solid var(--primary-color); /* Accent border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Base dark shadow */
+    transition: box-shadow 0.3s ease-in-out, border 0.3s;
+}
+
+.skill-category:hover {
+    /* KEY CHANGE: Neon Outline and Shadow */
+    border: 1px solid var(--primary-color); 
+    box-shadow: 0 0 5px var(--primary-color), var(--neon-shadow-subtle); 
+}
+
+
+/* --- Skills Sub-lines (List Items) --- */
+
+
+.skill-category ul {
+    list-style: disc; /* KEY CHANGE: Sets the default solid circle bullet point */
+    padding-left: 20px; /* IMPORTANT: Adds space so the bullets are visible */
+    margin-top: 10px; 
+}
+
+.skill-category li {
+    /* REDUCED LINE SPACE */
+    margin-bottom: 3px; /* Reduced from 8px */ 
+    
+    /* REDUCED FONT SIZE */
+    font-size: 0.9em; /* Added/adjusted for smaller text */
+    
+    padding: 5px 10px; 
+    border-radius: 4px;
+    color: var(--text-color); 
+    border: 1px solid transparent; 
+    box-shadow: none;
+    transition: box-shadow 0.3s ease-in-out, border 0.3s;
+}
+
+.skill-category li:hover {
+    border: 1px solid rgba(77, 182, 172, 0.5); 
+    background-color: rgba(77, 182, 172, 0.05); 
+    box-shadow: var(--neon-shadow-subtle); 
+}
+
+/* ---------------------------------------------------- */
+/* Projects Section (Neon Glow) */
+/* ---------------------------------------------------- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background-color: var(--card-background); 
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--card-background); /* Base border */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    transition: transform 0.3s, box-shadow 0.3s ease-in-out, border 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    /* KEY CHANGE: Stronger Neon Outline and Shadow on Hover */
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8), var(--neon-shadow-strong); 
+}
+
+/* ---------------------------------------------------- */
+/* Certification Gallery Styling (Neon Glow) */
+/* ---------------------------------------------------- */
+
+.cert-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    margin-top: 20px;
+}
+
+.cert-item {
+    padding: 15px 10px;
+    background-color: var(--card-background); 
+    border-radius: 8px;
+    border: 1px solid var(--card-background); /* Base border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+    transition: transform 0.2s, box-shadow 0.3s ease-in-out, border 0.3s;
+}
+
+.cert-item:hover {
+    transform: translateY(-3px);
+    /* KEY CHANGE: Neon Outline and Shadow on Hover */
+    border: 1px solid var(--primary-color);
+    box-shadow: var(--neon-shadow-strong); 
+}
+
+.cert-link {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color); 
+}
+
+.cert-badge {
+    width: 60px; 
+    height: 60px;
+    margin-bottom: 10px; 
+    border-radius: 50%; 
+    border: 2px solid transparent; /* Base border for effect */
+    transition: border 0.3s;
+}
+
+.cert-item:hover .cert-badge {
+    border: 2px solid var(--primary-color); /* Highlight badge border on item hover */
+}
+
+.cert-caption {
+    font-size: 0.9em;
+    margin: 0;
+}
+
+
+/* ---------------------------------------------------- */
+/* Footer */
+/* ---------------------------------------------------- */
+footer {
+    text-align: center;
+    padding: 20px 5%;
+    background-color: #000000; 
+    color: var(--text-color); 
+    font-size: 0.9em;
+}
+
+/* ---------------------------------------------------- */
+/* Separation between Skill Categories and Certifications */
+/* ---------------------------------------------------- */
+
+.certifications {
+    margin-top: 50px; 
+}
+
+.contact-info {
+    margin-top: 20px;
+    line-height: 2; 
+}
+
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s; /* Added text-shadow */
+}
+
+.contact-info a:hover {
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--primary-color); /* Neon text glow */
+    text-decoration: underline;
+}
+
+.social-links {
+    margin-top: 15px;
+    font-size: 1.1em;
+}
+
+/* ---------------------------------------------------- */
+/* Responsive Design (Media Queries) */
+/* ---------------------------------------------------- */
+@media (max-width: 768px) {
+    /* Adjust navigation for tablets/small screens */
+    .nav-links {
+        gap: 15px;
+    }
+    
+    /* Skills container will wrap to stack columns */
+    .skill-category-container {
+        justify-content: center;
+    }
+    
+    /* Project grid automatically adjusts based on minmax function */
+    .project-grid {
+        grid-template-columns: 1fr; /* Force single column on very small screens */
+    }
+    
+    .hero-section {
+        min-height: 60vh;
+    }
+}
+
+@media (max-width: 600px) {
+    .cert-gallery {
+        /* On smaller screens, switch to two columns or even one if needed */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+/* ---------------------------------------------------- */
+/* Contact Section (Tighter Cards with Centering) */
+/* ---------------------------------------------------- */
+
+.contact-card-grid {
+    /* Use CSS Grid for the 3-column layout */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Reduced gap between cards */
+    margin-top: 30px; /* Reduced top margin */
+}
+
+.contact-card {
+    /* KEY CHANGE: Reduced internal padding */
+    padding: 20px 60px; 
+    
+    /* FIX: Center all inline content (text, links, icons) inside the box */
+    text-align: center; 
+    
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    border: 1px solid var(--card-background); 
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+}
+
+.contact-icon {
+    /* KEY CHANGE: Reduced icon size */
+    font-size: 2em; 
+    display: block; /* Still needs to be block for margin-bottom to work */
+    margin-bottom: 5px; /* Reduced space below icon */
+    color: var(--primary-color); 
+    /* The icon is centered by the parent's text-align: center; */
+}
+
+.contact-card h3 {
+    margin-top: 0;
+    margin-bottom: 3px; /* Reduced space below heading */
+    /* Optional: Reduced font size for tighter fit */
+    font-size: 1.1em; 
+}
+
+.contact-detail a {
+    color: var(--primary-color); 
+    font-size: 0.9em; /* Reduced font size for links/details */
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+/* Responsive adjustment for the contact grid */
+@media (max-width: 900px) {
+    .contact-card-grid {
+        /* On medium screens, switch to 2 columns to keep size manageable */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px; 
+    }
+}
+@media (max-width: 600px) {
+    .contact-card-grid {
+        /* Collapse to 1 column on mobile */
+        grid-template-columns: 1fr;
+    }
+}
