@@ -212,8 +212,7 @@ header {
     min-width: 250px; 
     padding: 20px;
     background-color: var(--card-background); 
-    /* The border will now be uniform, relying on the hover effect for accent */
-    border: 1px solid var(--card-background); 
+    border: 1px solid var(--card-background); /* Base border to match card */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Base dark shadow */
     transition: box-shadow 0.3s ease-in-out, border 0.3s;
 }
@@ -236,7 +235,7 @@ header {
 
 .skill-category li {
     /* REDUCED LINE SPACE */
-    margin-bottom: 3px; /* Reduced from 8px */ 
+    margin-bottom: 8px; /* Increased line space */ 
     
     /* REDUCED FONT SIZE */
     font-size: 0.9em; /* Added/adjusted for smaller text */
@@ -529,8 +528,6 @@ footer {
     margin: 0; 
     line-height: 1.3;
 }
-
-
 
 
 /* ---------------------------------------------------- */
