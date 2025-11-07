@@ -127,6 +127,7 @@ header {
     box-shadow: var(--neon-shadow-subtle); /* Button neon glow */
 }
 
+
 /* ---------------------------------------------------- */
 /* Leadership Section Styling (Neon Glow) */
 /* ---------------------------------------------------- */
@@ -211,8 +212,8 @@ header {
     min-width: 250px; 
     padding: 20px;
     background-color: var(--card-background); 
-    border: 1px solid var(--card-background); /* Base border to match card */
-    border-left: 3px solid var(--primary-color); /* Accent border */
+    /* The border will now be uniform, relying on the hover effect for accent */
+    border: 1px solid var(--card-background); 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Base dark shadow */
     transition: box-shadow 0.3s ease-in-out, border 0.3s;
 }
@@ -223,9 +224,9 @@ header {
     box-shadow: 0 0 5px var(--primary-color), var(--neon-shadow-subtle); 
 }
 
-
+/* ---------------------------------------------------- */
 /* --- Skills Sub-lines (List Items) --- */
-
+/* ---------------------------------------------------- */
 
 .skill-category ul {
     list-style: disc; /* KEY CHANGE: Sets the default solid circle bullet point */
@@ -253,6 +254,7 @@ header {
     background-color: rgba(77, 182, 172, 0.05); 
     box-shadow: var(--neon-shadow-subtle); 
 }
+
 
 /* ---------------------------------------------------- */
 /* Projects Section (Neon Glow) */
@@ -468,4 +470,114 @@ footer {
         /* Collapse to 1 column on mobile */
         grid-template-columns: 1fr;
     }
+}
+
+/* ---------------------------------------------------- */
+/* Education Section (Card Layout & Neon Effects) */
+/* ---------------------------------------------------- */
+
+.education-grid {
+    /* Uses CSS Grid for segregation and display */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px; /* Space between the cards (segregation) */
+    margin-top: 30px;
+    margin-bottom: 30px; 
+    text-align: left;
+}
+
+.about-summary {
+    margin-top: 20px;
+    padding-top: 20px; 
+    border-top: 1px dashed rgba(224, 224, 224, 0.1); /* Visual separation line */
+}
+
+.education-card {
+    /* Base Card Styling */
+    background-color: var(--card-background); 
+    padding: 25px; /* INCREASED PADDING for internal space */
+    border-radius: 8px;
+    
+    /* Base border and shadow */
+    border: 1px solid var(--card-background); /* Base border matching card color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    line-height: 1.4; 
+    
+    /* Transitions for smooth hover effects */
+    transition: transform 0.3s, box-shadow 0.3s ease-in-out, border 0.3s;
+}
+
+.education-card:hover {
+    /* Hover Lift Effect */
+    transform: translateY(-5px);
+    
+    /* NEON OUTLINE AND GLOW EFFECT */
+    border: 1px solid var(--primary-color); /* Teal outline */
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.8), /* Dark shadow base */
+        var(--neon-shadow-strong);     /* Strong teal neon glow */
+}
+
+.education-card h3 {
+    color: var(--primary-color); 
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.education-card p {
+    font-size: 0.9em;
+    margin: 0; 
+    line-height: 1.3;
+}
+
+
+
+
+/* ---------------------------------------------------- */
+/* LIGHT THEME VARIABLES (For Toggle) */
+/* ---------------------------------------------------- */
+body.light-theme {
+    /* Base Colors Reversed */
+    --text-color: #333;             /* Dark text */
+    --background-color: #f4f7f6;    /* Light gray background */
+    --card-background: #ffffff;     /* White cards/sections */
+    
+    /* Neon accent stays the same for highlights */
+    --primary-color: #007bff;       /* Use a standard accent color for light theme */
+    --secondary-color: #0056b3;
+}
+
+/* Specific component overrides for the light theme */
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3 {
+    color: var(--text-color);
+}
+
+body.light-theme .hero-section {
+    /* Light, subtle gradient */
+    background: linear-gradient(135deg, #e0f7fa, #cce0ff); 
+}
+
+body.light-theme footer {
+    background-color: #E0E0E0; /* Light gray footer */
+    color: var(--text-color);
+}
+
+/* ---------------------------------------------------- */
+/* Theme Toggle Button Styling */
+/* ---------------------------------------------------- */
+#theme-toggle {
+    background: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#theme-toggle:hover {
+    background: var(--secondary-color);
 }
