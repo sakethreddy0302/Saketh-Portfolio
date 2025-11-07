@@ -12,12 +12,18 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#leadership">Leadership</a></li> 
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <button id="theme-toggle" aria-label="Toggle dark and light mode">
+            ☀️ Light Mode
+        </button>
         </header>
+        
 
     <main>
         <section id="hero" class="hero-section">
@@ -31,11 +37,29 @@
 
         <section id="about" class="about-section">
             <h2>Education & Overview</h2>
-            <div class="education-details">
-                <h3>AMRITA VISHWA VIDYAPEETHAM</h3>
-                <p>Bachelor of Technology in Electronics and Computer Engineering</p>
+            
+            <div class="education-grid">
+                
+                <div class="education-details education-card">
+                    <h3>AMRITA VISHWA VIDYAPEETHAM - 6.79 CGPA</h3>
+                    <p>Bachelor of Technology in Electronics and Computer Engineering (2020-2024)</p>
+                </div>
+                
+                <div class="education-details education-card">
+                    <h3>Narayana Junior College - 7.99 CGPA</h3>
+                    <p>Degree in Intermediate MPC (2018-2020)</p>
+                </div>
+                
+                <div class="education-details education-card">
+                    <h3>Narayana EM High School - 9.2 CGPA</h3>
+                    <p>Degree in High School (2018)</p>
+                </div>
+                
             </div>
-            <p>Passionate about problem-solving, I am committed to staying updated with emerging technologies to design efficient, reliable solutions that drive technological advancements.</p>
+            
+            <div class="about-summary">
+                <p>Passionate about problem-solving ,I am committed to staying updated with emerging technologies to design efficient, reliable solutions that drive technological advancements.</p>
+            </div>
         </section>
 
         <section id="leadership" class="leadership-section">
@@ -152,21 +176,21 @@
                     
                     <div class="cert-item">
                         <a href="https://coursera.org/share/008d6388d79176f228849d01c2cf4056" target="_blank" class="cert-link">
-                            <img src="assets/U-M_Logo-Hex.png" alt="Python Data Structures Certification Badge" class="cert-badge">
+                            <img src="/Users/sakethdagada/Downloads/MyPortfolio/U-M_Logo-Hex.png" alt="Python Data Structures Certification Badge" class="cert-badge">
                             <p class="cert-caption">Python Data Structures (Coursera)</p>
                         </a>
                     </div>
                     
                     <div class="cert-item">
                         <a href="https://coursera.org/share/b88c5a0f7751a65a3d8efa1dc6e35561" target="_blank" class="cert-link">
-                            <img src="assets/images.png" alt="SQL Certification Badge" class="cert-badge">
+                            <img src="/Users/sakethdagada/Downloads/MyPortfolio/images.png" alt="SQL Certification Badge" class="cert-badge">
                             <p class="cert-caption">The Structured Query Language (SQL) (Coursera)</p>
                         </a>
                     </div>
                     
                     <div class="cert-item">
                         <a href="https://coursera.org/share/fc5fed7cac6785a661aacce2cdd54985" target="_blank" class="cert-link">
-                            <img src="assets/Unknown.jpeg" alt="Cybersecurity Certification Badge" class="cert-badge">
+                            <img src="/Users/sakethdagada/Downloads/MyPortfolio/Unknown.jpeg" alt="Cybersecurity Certification Badge" class="cert-badge">
                             <p class="cert-caption">Introduction to Cybersecurity Essentials (Coursera)</p>
                         </a>
                     </div>
@@ -209,6 +233,18 @@
 
             </div>
         </section>
+        <section id="publications" class="publications-section">
+            <h2>Publications</h2>
+            <div class="publication-card-grid project-grid">
+                
+                <div class="publication-card project-card">
+                    <h3>Virtual Voice Assistant (Jenny)</h3>
+                    <p class="role-desc">Developed an AI-powered virtual voice assistant with natural language processing, task management, and smart device integration, designed to streamline daily tasks and enhance user productivity.</p>
+                    <a href="https://ieeexplore.ieee.org/document/10915524" class="project-link">Read Abstract</a>
+                </div>
+                
+            </div>
+        </section>
         <section id="contact" class="contact-section">
             <h2>Let's Connect</h2>
             <p>I am eager to apply my academic knowledge in a challenging environment. Feel free to reach out!</p>
@@ -246,3 +282,35 @@
     </body>
 </html>
 
+
+<script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // 1. Function to set the theme based on local storage
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                body.classList.add('light-theme');
+                toggleButton.textContent = '🌙 Dark Mode';
+            } else {
+                body.classList.remove('light-theme');
+                toggleButton.textContent = '☀️ Light Mode';
+            }
+        }
+
+        // 2. Load preferred theme from local storage on startup
+        const storedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark
+        applyTheme(storedTheme);
+
+        // 3. Add listener to the button for switching theme
+        toggleButton.addEventListener('click', () => {
+            const currentTheme = body.classList.contains('light-theme') ? 'light' : 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // Apply new theme and save preference
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+</body>
+</html>
