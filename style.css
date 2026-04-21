@@ -626,3 +626,23 @@ body.light-theme .exp-bullets li {
 .experience-section h2 {
     margin-bottom: 40px;
 }
+
+/* Fix for the overlapping summary and button */
+.about-summary {
+    margin-top: 60px; /* Increased top margin to clear the hero button */
+    padding: 0 10%; /* Adds horizontal padding for better readability */
+    font-size: 1.1em;
+    line-height: 1.8;
+    text-align: center;
+    color: var(--leadership-text-color); /* Uses your existing variable for a subdued look */
+}
+
+/* Ensure the hero section has enough bottom spacing */
+.hero-content {
+    padding-bottom: 40px; 
+}
+
+/* Additional fix for the button spacing */
+.objective {
+    margin-bottom: 40px !important; /* Forces space between the text and the 'Get In Touch' button */
+}
