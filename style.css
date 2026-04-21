@@ -511,3 +511,99 @@ body.light-theme #theme-toggle:focus {
     box-shadow: 0 0 5px var(--primary-color);
 
 }
+
+/* ---------------------------------------------------- */
+/* Experience Section & Professional Cards */
+/* ---------------------------------------------------- */
+
+.experience-section {
+    padding: var(--padding-section) 5%;
+}
+
+.experience-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Reusing card base logic with specific experience layout */
+.experience-card {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: var(--card-border-subtle);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s, box-shadow 0.3s ease-in-out, border 0.3s;
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9), var(--neon-shadow-strong);
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.exp-header h3 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-bottom: 0;
+}
+
+.exp-location-date {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-size: 0.85em;
+    color: var(--duration-color);
+}
+
+.company-name {
+    font-weight: 700;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    display: block;
+}
+
+.exp-bullets {
+    padding-left: 20px;
+    list-style-type: square;
+}
+
+.exp-bullets li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Light Theme Overrides for Experience Section */
+body.light-theme .experience-card:hover {
+    box-shadow: var(--card-hover-shadow);
+}
+
+body.light-theme .exp-bullets li {
+    color: #444;
+}
+
+/* Responsive adjustments for the experience header */
+@media (max-width: 768px) {
+    .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .exp-location-date {
+        text-align: left;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+}
