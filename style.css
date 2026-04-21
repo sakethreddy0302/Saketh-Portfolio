@@ -607,3 +607,22 @@ body.light-theme .exp-bullets li {
         margin-bottom: 10px;
     }
 }
+
+
+/* Styling bullets inside experience cards */
+.exp-bullets {
+    padding-left: 15px;
+    margin-top: 10px;
+    list-style-type: square;
+    font-size: 0.9em; /* Slightly smaller to fit card layout */
+}
+
+.exp-bullets li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* Optional: Ensure the heading within the section matches your theme */
+.experience-section h2 {
+    margin-bottom: 40px;
+}
