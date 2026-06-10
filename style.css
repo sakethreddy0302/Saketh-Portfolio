@@ -185,6 +185,32 @@ header {
 /* ---------------------------------------------------- */
 /* Hero Section (FIXED) */
 /* ---------------------------------------------------- */
+/* 1. Center the content container and give it a bit of padding */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Centers everything horizontally */
+    text-align: center;     /* Centers the text alignment */
+    padding: 40px 20px;
+}
+
+/* 2. Style the main objective paragraph to restrict its width */
+.hero-content .objective {
+    max-width: 750px;       /* Keeps the text from stretching too wide */
+    width: 100%;            /* Allows responsiveness on smaller screens */
+    line-height: 1.6;       /* Gives breathing room between the lines */
+    margin: 0 auto 30px auto; /* 'auto' left/right centers it; 30px bottom pushes the button down */
+    font-size: 1.1rem;      /* Adjust size if needed for readability */
+}
+
+/* 3. Style the button to ensure it has enough breathing room */
+.hero-content .btn.primary-btn {
+    display: inline-block;
+    margin-top: 10px;       /* Extra insurance to prevent overlapping */
+    padding: 12px 28px;
+    /* Keep your existing background-color, border-radius, etc. here */
+}
+
 .hero-section {
     /* Uses variables for dynamic theme switching */
     background: linear-gradient(135deg, var(--hero-bg-start), var(--hero-bg-end)); 
